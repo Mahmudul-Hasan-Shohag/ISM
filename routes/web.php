@@ -1,5 +1,6 @@
 <?php
-use App\Http\Controllers\Ism\HomeController;
+use App\Http\Controllers\Backend\HomeController;
+use App\Http\Controllers\Backend\PurchaseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('backend.master');
 });
-Route::get('/home',[HomeController::class,'home'])->name('home');
-Route::get('/profile',[HomeController::class,'profile'])->name('profile');
+//Dashboard
+Route::get('/dashboard',[HomeController::class,'home'])->name('home');
+//PurchaseItems
+Route::get('/purchase',[PurchaseController::class,'purchase'])->name('purchase');
+Route::get('/purchase/add',[PurchaseController::class,'add'])->name('add');
