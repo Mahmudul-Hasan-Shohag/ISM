@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePurchaseitemsTable extends Migration
+class CreateCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreatePurchaseitemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('purchaseitems', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('product_name');
-            $table->string('purchase_category');
-            $table->string('purchase_price');
-            $table->string('quantity');
-            $table->date('purchase_date');
+            $table->string('cus_name',20);
+            $table->string('cus_address',30);
+            $table->string('cus_mobile',20);
+            $table->string('cus_email',20)->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreatePurchaseitemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchaseitems');
+        Schema::dropIfExists('customers');
     }
 }

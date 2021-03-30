@@ -40,7 +40,7 @@
 <li class="nav-item active">
     <a class="nav-link" href="{{route('purchase')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Purcchase Items</span></a>
+        <span>Purchase Items</span></a>
 </li>
 
 <li class="nav-item active">
@@ -51,7 +51,7 @@
 
 
 <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="{{route('memo.create')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Cash Memo</span></a>
 </li>
@@ -73,7 +73,7 @@
 </li>
 
 <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="{{route('customer')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Customers</span></a>
 </li>
@@ -96,9 +96,8 @@
     </a>
     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="login.html">Admin</a>
-            <a class="collapse-item" href="register.html">Customers</a>
-            <a class="collapse-item" href="forgot-password.html">Employees</a>
+            <a class="collapse-item" href="{{route('customerregistration')}}">Customers</a>
+            <a class="collapse-item" href="{{route('employeeregistration')}}">Employees</a>
             <div class="collapse-divider"></div>
             
         </div>

@@ -2,6 +2,11 @@
 @section('purchase')
 
 
+<div class="form-group col-md-4">
+<a class="btn btn-success"  href="{{route('add')}}">Add Purchase Items</a>
+
+</div>
+<div class="form-group col-md-12 ">
 <table class="table table-borderless table-dark table-hover ">
   <thead>
     <tr>
@@ -15,22 +20,28 @@
     </tr>
   </thead>
   <tbody>
+  @foreach($purchase_details as $key=>$data)
     <tr class="table-primary">
-      <th scope="row">1</th>
-      <td >Cow</td>
-      <td>Animal</td>
-      <td>45000tk</td>
-      <td>45000tk</td>
-      <td>2021-03-25</td>
-      <td> <a class="btn btn-success" href="{{route('add')}}">Add</a></td>
-      @yield('add')
-      <td> <a class="btn btn-danger" href="">Drop</a></td>
+    <th scope="row">{{$key+1}}</th>
+            <td>{{$data->product_name}}</td>
+            <td>{{$data->purchase_category}}</td>
+            <td>{{$data->purchase_price}}</td>
+            <td>{{$data->quantity}}</td>
+            <td>{{$data->purchase_date}}</td>
+                  
+      <td>
+      
+      
+      <a class="btn btn-danger" href="">Drop</a>
+      </td>
+      @endforeach
 
     </tr>
-    
+   
   </tbody>
+  
 </table>
 
-
+</div>
 
 @endsection
