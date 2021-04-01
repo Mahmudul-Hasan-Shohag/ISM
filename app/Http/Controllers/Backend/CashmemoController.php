@@ -16,7 +16,7 @@ class CashmemoController extends Controller
         return view('backend.layouts.cashmemo.create');
     }
     public function sends(Request $request){
-Cashmemo::sends([
+Cashmemo::create([
 'customer_name'=>$request->customer_name,
 'address'=>$request->address,
 'mobile'=>$request->mobile,

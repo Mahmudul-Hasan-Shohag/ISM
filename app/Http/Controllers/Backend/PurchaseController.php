@@ -26,11 +26,18 @@ Purchase::create([
 'id'=>$request->id,
 'product_name'=>$request->product_name,
 'purchase_category'=>$request->purchase_category,
-'purchase_price'=>$request->purchase_price,
+'unit_price'=>$request->unit_price,
 'quantity'=>$request->quantity,
 'purchase_date'=>$request->purchase_date
 ]);
+return redirect()->route('purchase');
+    }
+
+   public function delete($id){
+$del=Purchase::find($id);
+$del->delete();
 return redirect()->back();
+
     }
 
 }

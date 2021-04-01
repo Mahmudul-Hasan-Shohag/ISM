@@ -19,19 +19,18 @@
 
 
 <table >
-@foreach($cash_memo as $data)
 <tr>
 <td>Customer Name:</td>
-<td>{{$data->customer_name}}</td>
+<td>{{$cash_memo->customer_name}}</td>
 </tr>
 <tr>
 <tr>
 <td>Address:</td>
-<td>{{$data->address}}</td>
+<td>{{$cash_memo->address}}</td>
 </tr>
 <tr>
 <td>Mobile:</td>
-<td>{{$data->mobile}}</td>
+<td>{{$cash_memo->mobile}}</td>
 <tr>
 </table>
 <p>------------------------------------------------------------------------------------------------------------------------------------------------</p>
@@ -39,38 +38,38 @@
 <table>
 <tr>
 <td>Product ID:</td>
-<td>{{$data->product_id}}</td>
+<td>{{$cash_memo->product_id}}</td>
 </tr>
 <tr>
 <tr>
 <td>Product Name:</td>
-<td>{{$data->product_name}}</td>
+<td>{{$cash_memo->product_name}}</td>
 </tr>
 <tr>
 <td>Product Quantity:</td>
-<td>{{$data->product_quantity}}</td>
+<td>{{$cash_memo->product_quantity}}</td>
 <tr>
 <tr>
 <td>Unit Price:</td>
-<td>{{$data->unit_price}}</td>
+<td>{{$cash_memo->unit_price}}</td>
 <tr>
 <tr>
 <td>Total Price:</td>
-<td>{{$data->total_price}}</td>
+<td>{{$cash_memo->total_price}}</td>
 <tr>
 <tr>
 <td>Discount:</td>
-<td>{{$data->discount}}</td>
+<td>{{$cash_memo->discount}}</td>
 <tr>
 <tr>
 <td>Cash:</td>
-<td>{{$data->cash}}</td>
+<td>{{$cash_memo->cash}}</td>
 <tr>
 <tr>
 <td>Due:</td>
-<td>{{$data->due}}</td>
+<td>{{$cash_memo->due}}</td>
 <tr>
-@endforeach
+
 </table>
 
 

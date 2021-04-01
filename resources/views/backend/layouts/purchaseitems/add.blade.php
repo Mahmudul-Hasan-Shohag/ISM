@@ -13,12 +13,17 @@
     <input name="product_name" type="text" class="form-control" id="product_name" placeholder="">
   </div>
   <div class="form-group col-md-8">
-    <label for="purchase_category">Purchase Category</label>
-    <input name="purchase_category" type="text" class="form-control" id="purchase_category" placeholder="">
+    <label for="purchase_category">Select Purchase Category</label>
+    <select name="purchase_category" id="purchase_category">
+    <option value="Animal">Animal</option>
+    <option value="Animal Food">Animal Food</option>
+    <option value="Medicine">Medicine</option>
+    <option value="Others">Others</option>
+  </select>
   </div>
   <div class="form-group col-md-8">
-  <label for="purchase_price">Purchase Price</label>
-  <input name="purchase_price" type="number" class="form-control" id="purchase_price" placeholder="">
+  <label for="unit_price">Unit Price</label>
+  <input name="unit_price" type="number" class="form-control" id="unit_price" placeholder="">
   </div>
   <div class="form-group col-md-8">
   <label for="quantity">Quantity</label>

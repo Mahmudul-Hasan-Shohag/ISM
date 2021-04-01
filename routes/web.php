@@ -34,7 +34,7 @@ Route::get('/dashboard',[HomeController::class,'home'])->name('home');
 Route::get('/purchase',[PurchaseController::class,'purchase'])->name('purchase');
 Route::get('/purchase/add',[PurchaseController::class,'add'])->name('add');
 Route::post('/purchase/add',[PurchaseController::class,'create'])->name('purchase.create');
-
+Route::delete('/purchase/{id}',[PurchaseController::class,'delete'])->name('purchase.delete');
 //Cash Memo
 
 Route::get('/cashmemo',[CashmemoController::class,'cashmemo'])->name('cashmemo');
@@ -45,4 +45,7 @@ Route::post('/cashmemo/create',[CashmemoController::class,'sends'])->name('memoc
 Route::get('/registrations/customerregistration',[RegistrationController::class,'customerregistration'])->name('customerregistration');
 Route::post('/registrations/customerregistration',[RegistrationController::class,'createcustomer'])->name('customerregistration.create');
 Route::get('customer',[RegistrationController::class,'customer'])->name('customer');
+
 Route::get('/registrations/employeeregistration',[RegistrationController::class,'employeeregistration'])->name('employeeregistration');
+Route::post('/registrations/employeeregistration',[RegistrationController::class,'createemployee'])->name('employeeregistration.create');
+Route::get('employeeinfo',[RegistrationController::class,'employeeinfo'])->name('employeeinfo');
