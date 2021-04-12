@@ -14,18 +14,17 @@ class CreateCashmemosTable extends Migration
     public function up()
     {
         Schema::create('cashmemos', function (Blueprint $table) {
-           // $table->id();
-            $table->string('customer_name',20);
-            $table->string('address',30);
-            $table->string('mobile',30);
-            $table->string('product_id',30);
-            $table->string('product_name',30);
-            $table->string('product_quantity',30);
-            $table->string('unit_price',20);
-            $table->string('total_price',30);
-            $table->string('discount',30);
-            $table->string('cash',30);
-            $table->string('due',30);
+            $table->id();
+            $table->date('date');
+            $table->string('customer_name',50);
+            $table->string('customer_id',50)->nullable();
+            $table->string('product_name',50);
+            $table->string('product_id',50);
+            $table->string('quantity',50);
+            $table->string('unit_price',100);
+            $table->string('discount',100)->nullable();
+            $table->string('cash',100)->nullable();
+            $table->string('due',100)->nullable();
             $table->timestamps();
         });
     }

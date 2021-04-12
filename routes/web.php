@@ -1,9 +1,13 @@
 <?php
 use App\Http\Controllers\Backend\HomeController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\StockController;
 use App\Http\Controllers\Backend\PurchaseController;
-use App\Http\Controllers\Backend\CashmemoController;
 use App\Http\Controllers\Backend\RegistrationController;
-use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\AttendanceController;
+use App\Http\Controllers\Backend\CashmemoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,29 +21,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('backend.master');
-});
-//Authentication
-route::get('/login',[AuthController::class,'showlogin'])->name('login');
-//route::post('/login',[AuthController::class,'processlogin']);
-//route::get('/register',[AuthController::class,'showregister'])->name('register');
-route::post('/register',[AuthController::class,'processregister'])->name('register');
+
+
+Route::group(['prefix'=>'admin'],function(){
+
+    Route::get('/', function () {
+        return view('backend.master');
+    });
 //Dashboard
 
 Route::get('/dashboard',[HomeController::class,'home'])->name('home');
+
+//Categories
+
+Route::get('/products/categories',[CategoryController::class,'showcategory'])->name('category.show');
+Route::get('/products/categoryform',[CategoryController::class,'categoryform'])->name('category.form');
+Route::post('/products/categorycreate',[CategoryController::class,'createcategory'])->name('category.create');
+
+//products
+Route::get('products/producttable',[ProductController::class,'showproduct'])->name('product.show');
+Route::get('products/productform',[ProductController::class,'productform'])->name('product.form');
+Route::post('products/productcreate',[ProductController::class,'createproduct'])->name('product.create');
+
+//Stocks
+Route::get('products/stocktable',[StockController::class,'showstock'])->name('stock.show');
 
 //PurchaseItems
 
 Route::get('/purchase',[PurchaseController::class,'purchase'])->name('purchase');
 Route::get('/purchase/add',[PurchaseController::class,'add'])->name('add');
 Route::post('/purchase/add',[PurchaseController::class,'create'])->name('purchase.create');
-Route::delete('/purchase/{id}',[PurchaseController::class,'delete'])->name('purchase.delete');
-//Cash Memo
+Route::delete('/purchase/delete/{id}',[PurchaseController::class,'destroy'])->name('purchase.delete');
 
-Route::get('/cashmemo',[CashmemoController::class,'cashmemo'])->name('cashmemo');
-Route::get('/cashmemo/create',[CashmemoController::class,'create'])->name('memo.create');
-Route::post('/cashmemo/create',[CashmemoController::class,'sends'])->name('memocreate');
 
 //Registrations
 Route::get('/registrations/customerregistration',[RegistrationController::class,'customerregistration'])->name('customerregistration');
@@ -48,4 +61,24 @@ Route::get('customer',[RegistrationController::class,'customer'])->name('custome
 
 Route::get('/registrations/employeeregistration',[RegistrationController::class,'employeeregistration'])->name('employeeregistration');
 Route::post('/registrations/employeeregistration',[RegistrationController::class,'createemployee'])->name('employeeregistration.create');
-Route::get('employeeinfo',[RegistrationController::class,'employeeinfo'])->name('employeeinfo');
+Route::get('/employee/employeeinfo',[RegistrationController::class,'employeeinfo'])->name('employeeinfo');
+
+Route::get('employee/attendance',[RegistrationController::class,'showattendance'])->name('attendance.show');
+Route::get('employee/attendancesubmit',[RegistrationController::class,'submitattendance'])->name('attendance.submit');  
+Route::post('employee/attendancecreate',[RegistrationController::class,'createattendance'])->name('attendance.create');  
+
+//Orders
+Route::get('order/ordershow',[ OrderController::class,'showorder'])->name('order.show');
+Route::get('order/ordersubmit',[ OrderController::class,'orderform'])->name('order.form'); 
+
+//Attendance
+Route::get('employee/attendance',[AttendanceController::class,'showattendance'])->name('attendance.show');
+Route::get('employee/attendancesubmit',[AttendanceController::class,'submitattendance'])->name('attendance.submit');  
+Route::post('employee/attendancecreate',[AttendanceController::class,'createattendance'])->name('attendance.create');  
+
+//Cashmemo
+Route::get('/cashmemo/viewcashmemo',[CashmemoController::class,'showcashmemo'])->name('cashmemo.show');
+Route::get('/cahmemo/form',[CashmemoController::class,'cashmemoform'])->name('cashmemo.form');
+Route::get('/cahmemo/view/{id}',[CashmemoController::class,'cashmemoview'])->name('cashmemo.view');
+Route::post('/cashmemo/create',[CashmemoController::class,'cashmemocreate'])->name('cashmemo.create');
+});

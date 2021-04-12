@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('purchase')
+@section('dashboard')
 
 
 <div class="form-group col-md-4">
@@ -23,24 +23,25 @@
   </thead>
   <tbody>
   @foreach($purchase_details as $key=>$data)
+
     <tr class="table-primary">
     <th scope="row">{{$key+1}}</th>
-    <td>{{$data->id}}</td>
+           <td>{{$data->purchase_id}}</td>
             <td>{{$data->product_name}}</td>
             <td>{{$data->purchase_category}}</td>
             <td>{{$data->unit_price}}</td>
             <td>{{$data->quantity}}</td>
             <td>{{$data->unit_price*$data->quantity}}</td>
             <td>{{$data->purchase_date}}</td>
-            
-           
+
+
             <td>
-            <form action="{{route('purchase.delete',$data->id)}}" method="post">
-            @csrf
-            @method('DELETE') 
-      <button type="submit" class="btn btn-danger">Delete</button>
-      </form>
-      </td>
+                <form action="{{route('purchase.delete',$data->id)}}" method="post">
+                  @csrf
+                  @method ('DELETE')
+                  <button type="submit" class="btn btn-danger btn-block">Drop</button>
+               </form>
+            </td>
 
       @endforeach
 

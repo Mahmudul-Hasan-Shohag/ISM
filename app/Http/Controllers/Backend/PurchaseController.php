@@ -24,6 +24,7 @@ class PurchaseController extends Controller
     public function create(Request $request){
 Purchase::create([
 'id'=>$request->id,
+'purchase_id'=>$request->purchase_id,
 'product_name'=>$request->product_name,
 'purchase_category'=>$request->purchase_category,
 'unit_price'=>$request->unit_price,
@@ -33,10 +34,21 @@ Purchase::create([
 return redirect()->route('purchase');
     }
 
-   public function delete($id){
-$del=Purchase::find($id);
-$del->delete();
-return redirect()->back();
+   public function destroy($id){
+       //dd($id);
+
+      
+      
+try{
+
+    $purchase_details=Purchase::find($id);
+    $purchase_details->delete();
+}
+catch(Exception $e){
+
+}
+
+return redirect()->route('purchase');
 
     }
 

@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class Product extends Model
 {
     use HasFactory;
     protected $guarded=[];
     
-    public function employeeAttendance(){
+    public function productCategory(){
 
-        return $this->belongsTo(Employee::class,'id');
-    } 
-    
+        return $this->belongsTo(Category::class,'product_category','id');
+    }
 }

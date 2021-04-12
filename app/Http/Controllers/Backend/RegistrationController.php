@@ -27,6 +27,7 @@ return redirect()->back();
 
     public function customer(){
 $customer_details=Customer::all();
+
         return view('backend.layouts.customer',compact('customer_details'));
     }
 
@@ -41,16 +42,33 @@ $employee_info=Employee::all();
     }
 
     public function createemployee(Request $request){
+
+        $filename='';
+        if($request->hasFile('emp_image'))
+        {
+            //some code here to store into directory
+                $file = $request->file('emp_image');
+
+                if ($file->isValid()) {
+                    $filename =date('Ymdhms').'.'.$file->getClientOriginalExtension();
+//                    dd($filename);
+                    $file->storeAs('employee', $filename);
+                }
+}
 Employee::create([
     'id'=>$request->id,
+    'emp_id'=>$request->emp_id,
     'emp_name'=>$request->emp_name,
     'emp_address'=>$request->emp_address,
     'emp_mobile'=>$request->emp_mobile,
     'emp_email'=>$request->emp_email,
-    'emp_image'=>$request->emp_image
+    'emp_image'=>$filename
 
 ]);
 return redirect()->back();
 
     }
+
+    
+   
 }

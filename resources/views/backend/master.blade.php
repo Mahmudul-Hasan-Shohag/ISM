@@ -47,12 +47,8 @@
 
                 @yield('dashboard')
                 @yield('purchase')
-                @yield('add')
-                @yield('cash')
-                @yield('memo')
-                @yield('registration')
                 @yield('employee')
-                @yield('login')
+               
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>

@@ -15,7 +15,7 @@
 <!-- Nav Item - Dashboard -->
 <li class="nav-item active">
     <a class="nav-link" href="{{route('home')}}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+    <i class='fas fa-align-justify' style='font-size:24px'></i>
         <span>Dashboard</span></a>
 </li>
 
@@ -26,61 +26,67 @@
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
         aria-expanded="false" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
-        <span>Products</span>
+        <i class="fa fa-shopping-basket" style="font-size:24px"></i>
+        <span>Product details</span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="buttons.html">Categories</a>
-            <a class="collapse-item" href="cards.html">Stock</a>
-            <a class="collapse-item" href="cards.html">Product details</a>
+            <a class="collapse-item" href="{{route('category.show')}}">Categories</a>
+            <a class="collapse-item" href="{{route('product.show')}}">Products</a>
+            <a class="collapse-item" href="{{route('stock.show')}}">Stock</a>
         </div>
     </div>
 </li>
 <li class="nav-item active">
     <a class="nav-link" href="{{route('purchase')}}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+    <i class="fa fa-shopping-cart" style="font-size:24px"></i>
         <span>Purchase Items</span></a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="">
+    <i class="fa fa-shopping-cart" style="font-size:24px"></i>
+        <span>Orders</span></a>
 </li>
 
 <li class="nav-item active">
     <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+    <i class="fa fa-briefcase" style="font-size:24px"></i>
         <span>Sales</span></a>
 </li>
 
 
 <li class="nav-item active">
-    <a class="nav-link" href="{{route('memo.create')}}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Cash Memo</span></a>
+    <a class="nav-link" href="{{route('cashmemo.form')}}">
+    <i class="fa fa-briefcase" style="font-size:24px"></i>
+        <span>Cashmemo</span></a>
 </li>
 
 <!-- Nav Item - Utilities Collapse Menu -->
 <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-        aria-expanded="true" aria-controls="collapseUtilities">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Employees</span>
-    </a>
-    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-        data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="utilities-color.html">Attendance</a>
-            <a class="collapse-item" href="{{route('employeeinfo')}}">Info</a>
-        </div>
-    </div>
-</li>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Employee</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                       
+                        <a class="collapse-item" href="{{route('attendance.submit')}}">attendnce</a>
+                        <a class="collapse-item" href="{{route('employeeinfo')}}">info</a>
+                    </div>
+                </div>
+            </li>
 
 <li class="nav-item active">
     <a class="nav-link" href="{{route('customer')}}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+    <i class="fa fa-briefcase" style="font-size:24px"></i>
         <span>Customers</span></a>
 </li>
 <li class="nav-item active">
-    <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Report generation</span></a>
+    <a class="nav-link" href="">
+    <i class="fa fa-briefcase" style="font-size:24px"></i>
+        <span>Report Genertion</span></a>
 </li>
 
 
@@ -89,23 +95,20 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-        aria-expanded="true" aria-controls="collapsePages">
-        <i class="fas fa-fw fa-folder"></i>
-        <span>Registration</span>
-    </a>
-    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{route('customerregistration')}}">Customers</a>
-            <a class="collapse-item" href="{{route('employeeregistration')}}">Employees</a>
-            <div class="collapse-divider"></div>
-            
-        </div>
-    </div>
-</li>
-
-
-
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Registrations</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        
+                        <a class="collapse-item" href="{{route('customerregistration')}}">Customer</a>
+                        <a class="collapse-item" href="{{route('employeeregistration')}}">Employee</a>
+                        
+                    </div>
+                </div>
+            </li>
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 

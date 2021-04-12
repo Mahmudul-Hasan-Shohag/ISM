@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('registration')
+@section('dashboard')
 
 <style>
 
