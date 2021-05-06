@@ -9,4 +9,7 @@ class Purchase extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    public function purchaseCategory(){
+        return $this->belongsTo(Purchasecategory::class,'purchase_category','id');
+    }
 }

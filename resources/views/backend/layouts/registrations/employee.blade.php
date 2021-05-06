@@ -1,22 +1,17 @@
 @extends('backend.master')
 @section('employee')
 
-<style>
 
-div.a {
-  text-align: left;
-  color: Orange
-}
-</style>
-<div class="a">
-<h1>Employees Registration Form</h1>
 
+<h1 style="color:navy"><b><u><i>Employees Registration Form</i><u></b></h1>
+
+@if(session()->has('message'))
+<div class="alert alert-success">
+{{session()->get('message')}}
+</div>
+@endif    
 <form action="{{route('employeeregistration.create')}}" method="post" enctype="multipart/form-data">
 @csrf
-  <div class="form-group col-md-6">
-    <label for="emp_id">ID</label>
-    <input type="text" name="emp_id"class="form-control" id="emp_id" placeholder="">
-  </div>
   <div class="form-group col-md-6">
     <label for="emp_name">Name</label>
     <input type="text" name="emp_name"class="form-control" id="emp_name" placeholder="">

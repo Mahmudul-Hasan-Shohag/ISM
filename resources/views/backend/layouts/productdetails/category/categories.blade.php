@@ -1,10 +1,11 @@
 @extends('backend.master')
 @section('dashboard')
 
-<div class="form-group col-md-4">
-<a class="btn btn-success"  href="{{route('category.form')}}">Add category</a>
 
-</div>
+<p style="text-align:center;"> 
+<a class="btn btn-success"  href="{{route('category.form')}}">Add category</a>
+</p>
+
 
 
 <div class="form-group col-md-12 ">

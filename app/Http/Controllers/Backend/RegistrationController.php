@@ -24,15 +24,25 @@ Customer::create([
 ]);
 return redirect()->back();
     }
-
+//customer
     public function customer(){
 $customer_details=Customer::all();
 
         return view('backend.layouts.customer',compact('customer_details'));
     }
 
+    public function customersearch(Request $request){
 
+        $customer_details=Customer::where('cus_mobile','like','%'.$request->search.'%')->get();
+    return view('backend.layouts.customer',compact('customer_details'));
+    }
+public function customerdelete($id){
+$customer=Customer::find($id);
+$customer->delete();
+return redirect()->back()->with('message','Customer Deleted successfully');
+}
 
+//Employee
     public function employeeregistration(){
         return view('backend.layouts.registrations.employee');
     }
@@ -57,7 +67,6 @@ $employee_info=Employee::all();
 }
 Employee::create([
     'id'=>$request->id,
-    'emp_id'=>$request->emp_id,
     'emp_name'=>$request->emp_name,
     'emp_address'=>$request->emp_address,
     'emp_mobile'=>$request->emp_mobile,
@@ -65,10 +74,17 @@ Employee::create([
     'emp_image'=>$filename
 
 ]);
-return redirect()->back();
+return redirect()->back()->with('message','Registration Completed.');
+}
+public function employeedelete($id){
+$employee=Employee::find($id);
+$employee->delete();
+return redirect()->back()->with('message','Employee deleted successfully');
+}
+public function employeesearch(Request $request){
 
-    }
-
-    
+    $employee_info=Employee::where('emp_mobile','like','%'.$request->search.'%')->get();
+return view('backend.layouts.employee.employeeinfo',compact('employee_info'));
+} 
    
 }

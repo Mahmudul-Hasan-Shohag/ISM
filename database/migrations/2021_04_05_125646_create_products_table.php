@@ -18,8 +18,6 @@ class CreateProductsTable extends Migration
             $table->string('product_id',30);
             $table->string('product_name',30);
             $table->string('product_category',30);
-            $table->string('age',30);
-            $table->string('weight',30);
             $table->string('quantity',30);
             $table->string('price',30);
             $table->text('product_image')->nullable();

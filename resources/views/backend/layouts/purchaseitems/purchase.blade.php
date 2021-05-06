@@ -2,10 +2,10 @@
 @section('dashboard')
 
 
-<div class="form-group col-md-4">
+<p style="text-align:center;"> 
 <a class="btn btn-success"  href="{{route('add')}}">Add Purchase Items</a>
-
-</div>
+<a class="btn btn-info"  href="{{route('purchase.category')}}">Category</a>
+</p>
 <div class="form-group col-md-12 ">
 <table class="table table-borderless table-dark table-hover ">
   <thead>
@@ -28,7 +28,7 @@
     <th scope="row">{{$key+1}}</th>
            <td>{{$data->purchase_id}}</td>
             <td>{{$data->product_name}}</td>
-            <td>{{$data->purchase_category}}</td>
+            <td>{{$data->purchaseCategory->purchasecategory_name}}</td>
             <td>{{$data->unit_price}}</td>
             <td>{{$data->quantity}}</td>
             <td>{{$data->unit_price*$data->quantity}}</td>

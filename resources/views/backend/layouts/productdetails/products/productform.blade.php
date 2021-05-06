@@ -1,6 +1,6 @@
 @extends('backend.master')
 @section('dashboard')
-<form action="{{route('product.create')}}" method="post" enctype="multipart/form-data">
+<form class=" col-md-10" action="{{route('product.create')}}" method="post" enctype="multipart/form-data">
 @csrf
   <div class="form-group">
     <label for="product_id">ID</label>
@@ -22,19 +22,6 @@
                 </select>
             </div>
 
-  <div>
-  <div class="form-group">
-    <label for="age">Age</label>
-    <input type="number" class="form-control" id="age" name="age" >
-    
-  </div>
-
-  <div>
-  <div class="form-group">
-    <label for="weight">Weight</label>
-    <input type="number" class="form-control" id="weight" name="weight" >
-    
-  </div>
   <div>
   <div class="form-group">
     <label for="quantity">Quantity</label>

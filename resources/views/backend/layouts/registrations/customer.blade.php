@@ -13,10 +13,7 @@ div.a {
 
 <form action="{{route('customerregistration.create')}}" method="post">
 @csrf
-  <div class="form-group col-md-6">
-    <label for="cus_id">ID</label>
-    <input type="text" name="cus_id"class="form-control" id="cus_id" placeholder="">
-  </div>
+  
   <div class="form-group col-md-6">
     <label for="cus_name">Name</label>
     <input type="text" name="cus_name"class="form-control" id="cus_name" placeholder="">

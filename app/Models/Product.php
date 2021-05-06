@@ -13,5 +13,6 @@ class Product extends Model
     public function productCategory(){
 
         return $this->belongsTo(Category::class,'product_category','id');
+        //product_category is the attributes of products table
     }
 }
