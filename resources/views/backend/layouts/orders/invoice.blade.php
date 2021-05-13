@@ -54,8 +54,8 @@ class="col-sm-12">
   <input type="hidden" class="form-control"  name="cash" value="{{$cash}}">
   <input type="hidden" class="form-control"  name="due" value="{{$due}}">
   
+  <button type="submit"  class="btn btn-primary" href="" >Submit</button>
 
-<button type="submit" class="btn btn-primary" href="" >Submit</button>
 
 </form>
 <!--end Button-->
@@ -68,25 +68,29 @@ class="ribbon-inner"></div></div><div
 class="row"><div
 class="col-sm-6 top-left"> <i
 class=""></i></div><div
-class="col-sm-6 top-right"><h3 class="marginright"></h3> <span
-class="marginright"></span></div></div><hr><div
-class="row"><div
-class="col-xs-4 from">
-
-<p class="lead marginbottom">Seller: Mahmudul Hasan</p>
+class="col-sm-6 top-right"><h3 class="marginright"></h3>
+ <span class="marginright"></span>
+</div>
+</div>
+<hr>
+<div id="printArea">
+<div class="row">
+<div class="col-xs-4 from">
+<h3>Seller Information:</h3>
+<p >Seller: Mahmudul Hasan</p>
 <p>Address:Mirpur,Dhaka</p>
 <p>Mobile: 01521331269</p>
 <p>Email: mhs331269@gmail.com</p>
 </div>
+<h3>Customer Information:</h3>
 <div class="col-xs-4 to">
-<p class="lead marginbottom">Customer: {{$customer->cus_name}}</p>
+<p>Customer: {{$customer->cus_name}}</p>
 <p>Customer ID:{{$customer->id}}</p>
 <p>Address:{{$customer->cus_address}}</p>
 <p>Mobile:{{$customer->cus_mobile}}</p>
 <p>Email:{{$customer->cus_email}}</p>
 </div>
-<div class="col-xs-4 text-right payment-details">
-<p class="lead marginbottom payment-info">Payment details</p>
+<div>
 <p>{{date("l jS \of F Y ")}}</p>
 <p>Total Amount:{{Cart::subtotal()}} BDT</p>
 <p>Payment Method:{{$payment}}</p>
@@ -124,22 +128,27 @@ $sl=1;
 </tbody>
 </table>
 </div>
-<div class="row">
-<div class="col-xs-6 margintop">
-<p class="lead marginbottom">THANK YOU!</p>
- </div>
 
-
-
-
-<a class="btn btn-success" id="invoice-print" onclick="window.print()">
-<i class="fa fa-print"></i> Print Invoice</a> 
-
-<a href=""
-class="btn btn-danger"><i
-class="fa fa-envelope-o"></i> Mail Invoice</a></div>
+<p style="text-align:center">THANK YOU.SEE YOU AGAIN</p>
 
 </div>
+
+
+ 
+ <button type="button" onclick="printDiv()"  class="btn btn-danger ">Print</button>
+
+<a href=""class="btn btn-danger"><i class="fa fa-envelope-o"></i> Mail Invoice</a>
+
+<script type="text/javascript">
+function printDiv(){
+var printContents=document.getElementById("printArea").innerHTML;
+var originalContents=document.body.innerHTML;
+document.body.innerHTML=printContents;
+    window.print();
+}
+
+</script>
+
 
 
 

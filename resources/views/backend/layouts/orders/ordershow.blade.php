@@ -1,8 +1,9 @@
 @extends('backend.master')
 @section('dashboard')
-
-<p style="text-align:center">
+<h4 style="text-align: center;color:white;background-color:teal;"><b>Orders </b></h4>
+<p style="text-align:center;margin-top:20px">
 <a href="{{route('order.details')}}" class="btn btn-info">Show Order Details</a>
+<a href="{{route('orders.report')}}" class="btn btn-warning">Report</a>
 </p>
 @if(session()->has('message'))
 <div class="alert alert-success">
@@ -34,7 +35,7 @@
       <td>{{$data->due}}</td>
       <td>
       <div class="btn-group">
-      <a href="{{route('order.process',$data->id)}}" class="btn btn-success"><i class="fas fa-hand-holding-usd"></i>Sell</a>
+      <a href="{{route('sell.confirm',$data->id)}}" class="btn btn-success"><i class="fas fa-hand-holding-usd"></i>Sell</a>
       <a href="{{route('order.view',$data->id)}}" class="btn btn-info"><i class="fas fa-eye"></i>View</a>
       <a href="{{route('update.invoice',$data->id)}}" class="btn btn-warning"><i class="fas fa-file-invoice"></i>Invoice</a>
       </div>
@@ -43,4 +44,5 @@
    @endforeach
   </tbody>
 </table>
+{{$order->links()}}
 @endsection

@@ -175,7 +175,7 @@
     </div>
   </div>
        
-   <button type="submit" class="btn btn-success">Create Invoice</Button>
+   <button type="submit" class="btn btn-success">Check</Button>
   </form>
               
                

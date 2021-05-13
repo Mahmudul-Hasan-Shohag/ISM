@@ -1,13 +1,13 @@
 @extends('backend.master')
 @section('dashboard')
 
-<h1 style="text-align: center;color:blue;"><i> <u>Purchase Items Form<u></i></h1>
+<h4 style="text-align: center;color:white;background-color:purple;"><b>Add Purchase Items </b></h4> 
 
 
 <form class=" col-md-10"  action="{{route('purchase.create')}}" method="post">
 @csrf
   <div>
-    <label for="purchase_id">ID</label>
+    <label for="purchase_id">Product Code</label>
     <input name="purchase_id" type="text" class="form-control" id="purchase_id" placeholder="">
   </div>
   <br>
@@ -16,9 +16,9 @@
     <input name="product_name" type="text" class="form-control" id="product_name" placeholder="">
   </div>
   <br>
-  <div>
+  <div >
     <label for="purchase_category">Select Purchase Category</label>
-    <select name="purchase_category" id="purchase_category" name="purchase_category">
+    <select name="purchase_category" id="purchase_category" name="purchase_category"class="form-control">
     @foreach($categories as $data)
     <option value="{{$data->id}}">{{$data->purchasecategory_name}}</option>
     @endforeach

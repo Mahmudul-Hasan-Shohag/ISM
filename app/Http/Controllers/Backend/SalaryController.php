@@ -3,24 +3,22 @@
 namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Salary;
-use App\Models\Month;
+
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class SalaryController extends Controller
 {
     public function viewsalary(){
-        $month=Month::all();
        
-        $salarymonth=Salary::with('salaryMonth')->get();
+        $salary=Salary::all();
       
-return view('backend.layouts.employee.salary.viewsalary',compact('month','salarymonth'));
+return view('backend.layouts.employee.salary.viewsalary',compact('salary'));
 
     }
     public function salaryform(){
 
-       $month=Month::all();
-        return view('backend.layouts.employee.salary.salaryform',compact('month'));
+        return view('backend.layouts.employee.salary.salaryform');
         
             }
             public function salarycreate(Request $request){
@@ -35,16 +33,12 @@ return view('backend.layouts.employee.salary.viewsalary',compact('month','salary
                 
     return redirect()->back();                
 }
-public function salarymonth($id){
-    $month=Month::all();
-    $salarymonth=Salary::where('month',$id)->get();
-   
-    return view('backend.layouts.employee.salary.salarymonth',compact('month','salarymonth'));
-}
+
 public function employeesearch(Request $request){
-    $month=Month::all();
-$salarymonth=Salary::where('emp_id','like','%'.$request->search.'%')->get();
-return view('backend.layouts.employee.salary.viewsalary',compact('salarymonth','month'));
+    
+$salary=Salary::where('emp_id','like','%'.$request->search.'%')
+                     ->orwhere('month','like','%'.$request->search.'%')->get();
+return view('backend.layouts.employee.salary.viewsalary',compact('salary'));
 }
 }
 

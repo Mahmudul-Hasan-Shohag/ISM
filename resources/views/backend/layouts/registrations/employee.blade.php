@@ -3,7 +3,7 @@
 
 
 
-<h1 style="color:navy"><b><u><i>Employees Registration Form</i><u></b></h1>
+<h4 style="text-align: center;color:white;background-color:brown;"><b>Employees Registrration </b></h4>
 
 @if(session()->has('message'))
 <div class="alert alert-success">
@@ -27,6 +27,10 @@
   <div class="form-group col-md-6">
     <label for="emp_email">Email</label>
     <input type="email" name="emp_email"class="form-control" id="emp_email" placeholder="">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="salary">Salary</label>
+    <input type="number" name="salary"class="form-control" id="salary" placeholder="">
   </div>
   <div class="form-group col-md-6">
     <label for="emp_image"></label>

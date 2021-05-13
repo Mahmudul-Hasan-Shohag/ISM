@@ -1,5 +1,6 @@
 @extends('backend.master')
 @section('dashboard')
+<h4 style="text-align: center;color:white;background-color:purple;"><b>Add Employees Salary </b></h4> 
 <form style="padding-left:20px" action="{{route('salary.create')}}" method="post">
   @csrf
   
@@ -25,9 +26,19 @@
     <div class="form-group col-md-8">
       <label for="month">Month</label>
       <select id="month" class="form-control" name="month">
-      @foreach($month as $data)
-        <option value="{{$data->id}}">{{$data->month}}</option>
-       @endforeach
+      
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
       </select>
     </div>
 
@@ -45,7 +56,7 @@
   </div>
     
    
-  <button type="submit" class="btn btn-primary" style="btn btn-block" >Add</button>
+  <button type="submit" class="btn btn-primary" style="btn btn-block" >Submit</button>
   
 </form>
 @endsection

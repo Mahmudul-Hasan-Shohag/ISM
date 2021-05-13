@@ -20,6 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->string('emp_address',50);
             $table->string('emp_mobile',20);
             $table->string('emp_email',50)->nullable();
+            $table->string('salary',50)->nullable();
             $table->text('emp_image')->nullable();
             $table->timestamps();
         });

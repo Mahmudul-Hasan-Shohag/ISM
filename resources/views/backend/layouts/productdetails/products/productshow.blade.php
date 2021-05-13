@@ -1,11 +1,13 @@
 @extends('backend.master')
 @section('dashboard')
+<h4 style="text-align: center;color:white;background-color:indigo;"><b>Products </b></h4>
 <div class="btn-group" role="group" aria-label="Basic example">
+<p style="margin-top:50px">
 <form class="form-inline mr-auto w-100 navbar-search" action="{{route('product.search')}}" method="post">
 @csrf
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 small"
-                        placeholder="Search products" aria-label="Search" name="search"
+                        placeholder="Search product name" aria-label="Search" name="search"
                         aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">Search
@@ -31,18 +33,24 @@
 </div>
 
 </div>
-
+</p>
 <hr>
 <table class="table table-bordered " >
+@if(session()->has('message'))
+<div class="alert alert-success">
+{{session()->get('message')}}
+</div>
+@endif    
   <thead class="table-dark">
     <tr>
       <th scope="col">SL</th>
-      <th scope="col">ID</th>
+      <th scope="col">Product Code</th>
       <th scope="col">Name</th>
       <th scope="col">Category</th>
       <th scope="col">Quantity</th>
       <th scope="col">Unit Price</th>
       <th scope="col">Product Images</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -58,7 +66,11 @@
       <td>{{$data->quantity}}</td>
       <td>{{$data->price}}</td>
       <td> <img width="150px" src="{{url('/uploads/product/'.$data->product_image)}}" alt=""></td>
-    
+      <td>
+      <div class="btn-group">
+      <a href="{{route('product.edit',$data->id)}}" class="btn btn-success"><i class="fas fa-edit"></i>Edit</a>
+      <a href="{{route('product.delete',$data->id)}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</a>
+      </td>
     </tr>
     @endforeach
 

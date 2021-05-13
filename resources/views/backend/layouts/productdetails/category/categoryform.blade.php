@@ -1,6 +1,6 @@
 @extends('backend.master')
 @section('dashboard')
-<h1 style="text-align: center;color:black;background-color:coral;"><b> Category list </b></h1>
+<h4 style="text-align: center;color:white;background-color:indigo;"><b>Add Category </b></h4> 
 
 
 <form  class=" col-md-12" action="{{route('category.create')}}" method="post" enctype="multipart/form-data">

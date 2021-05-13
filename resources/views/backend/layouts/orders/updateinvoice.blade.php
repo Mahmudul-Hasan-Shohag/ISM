@@ -74,11 +74,11 @@ class="col-xs-11 label label-lg label-info arrowed-in arrowed-right"> <b>Company
 </div>
 <div>
 <ul class="list-unstyled  spaced">
-<li> <i class="ace-icon fa fa-caret-right green"></i>ID:{{$order->id}}</li>
-<li> <i class="ace-icon fa fa-caret-right green"></i>Name:{{$order->cus_name}}</li>
-<li> <i class="ace-icon fa fa-caret-right green"></i>Address:{{$order->cus_address}}</li>
-<li> <i class="ace-icon fa fa-caret-right green"></i>Mobile:{{$order->cus_mobile}}</li>
-<li> <i class="ace-icon fa fa-caret-right green"></i>Emaail:{{$order->cus_email}}</li>
+<li> <i class="ace-icon fa fa-caret-right green"></i>ID:{{$orderdetails->orderdetailsOrder->id}}</li>
+<li> <i class="ace-icon fa fa-caret-right green"></i>Name:{{$orderdetails->orderdetailsOrder->cus_name}}</li>
+<li> <i class="ace-icon fa fa-caret-right green"></i>Address:{{$orderdetails->orderdetailsOrder->cus_address}}</li>
+<li> <i class="ace-icon fa fa-caret-right green"></i>Mobile:{{$orderdetails->orderdetailsOrder->cus_mobile}}</li>
+<li> <i class="ace-icon fa fa-caret-right green"></i>Email:{{$orderdetails->orderdetailsOrder->cus_email}}</li>
 </ul>
 </div>
 </div>
@@ -90,6 +90,7 @@ class="col-xs-11 label label-lg label-info arrowed-in arrowed-right"> <b>Company
 <tr>
 <th class="center">SL</th>
 <th>Order ID</th>
+<th>Product Name</th>
 <th>Total Products</th>
 <th>Total Price</th>
 <th>Pay</th>
@@ -100,21 +101,28 @@ class="col-xs-11 label label-lg label-info arrowed-in arrowed-right"> <b>Company
 @php
 $sl=1;
 @endphp
-
+@foreach($order as $data)
 <tr>
 <td class="center">{{$sl++}}</td>
-<td>{{$order->id}} </td>
-<td> {{$order->total_products}}</td>
-<td>{{$order->totalprice}}</td>
-<td>{{$order->cash}}</td>
-<td>{{$order->due}}</td>
+<td>{{$orderdetails->id}} </td>
+
+<td>
+{{$data->product_name}}
+
+</td>
+
+<td> {{$orderdetails->orderdetailsOrder->total_products}}</td>
+<td>{{$orderdetails->orderdetailsOrder->totalprice}}</td>
+<td>{{$orderdetails->orderdetailsOrder->cash}}</td>
+<td>{{$orderdetails->orderdetailsOrder->due}}</td>
 
 </tr>
+@endforeach 
 <tr>
 
 </div>
 <div class="space-6"></div>
-<div class="well"> This is your updated invoice.Check previous invoice to show details.Thank you for choosing Our products.
+<div class="well">Thank you for choosing Our products.
 We believe you will be satisfied by our services.</div>
 </div>
 </div>

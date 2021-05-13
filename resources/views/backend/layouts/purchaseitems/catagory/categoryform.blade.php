@@ -1,6 +1,6 @@
 @extends('backend.master')
 @section('dashboard')
-<h1 style="text-align: center;color:black;background-color:coral;"><b> Add Purchase Category  </b></h1>
+<h4 style="text-align: center;color:white;background-color:purple;"><b>Add Purchase Category </b></h4> 
 
 
 <form  class=" col-md-12" action="{{route('post.purchasecategory')}}" method="post" enctype="multipart/form-data">

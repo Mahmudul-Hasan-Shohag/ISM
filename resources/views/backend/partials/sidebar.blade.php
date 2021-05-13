@@ -47,7 +47,7 @@
 </li>
 
 <li class="nav-item active">
-    <a class="nav-link" href="">
+    <a class="nav-link" href="{{route('sales')}}">
     <i class="fas fa-truck" style="color:black;font-size:20px"></i>
         <span style="color:black;font-size:16px">Sales</span></a>
 </li>
@@ -78,15 +78,10 @@
         <span style="color:black;font-size:16px">Customers</span></a>
 </li>
 <li class="nav-item active">
-    <a class="nav-link" href="">
-    <i class="fas fa-file-alt" style="color:black;font-size:20px"></i>
-        <span style="color:black;font-size:16px">Report Genertion</span></a>
+    <a class="nav-link" href="{{route('supplier.show')}}">
+    <i class="fas fa-truck-pickup" style="color:black;font-size:20px"></i>
+        <span style="color:black;font-size:16px">Suppliers</span></a>
 </li>
-
-
-<!-- Divider -->
-<hr class="sidebar-divider">
-
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"

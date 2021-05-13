@@ -1,15 +1,12 @@
 @extends('backend.master')
 @section('dashboard')
 
-<style>
-
-div.a {
-  text-align: left;
-  color: Orange
-}
-</style>
-<div class="a">
-<h1>Customer Registration Form</h1>
+<h4 style="text-align: center;color:white;background-color:green;"><b>Customers Registration </b></h4> 
+@if(session()->has('message'))
+<div class="alert alert-success">
+{{session()->get('message')}}
+</div>
+@endif 
 
 <form action="{{route('customerregistration.create')}}" method="post">
 @csrf

@@ -42,5 +42,23 @@ Category::create([
 
 
     }
+    public function categorydelete($id){
+$category=Category::find($id);
+$category->delete();
+return redirect()->back()->with('message','Category deleted successfully');
+    }
+
+    public function categoryedit($id){
+        $category=Category::find($id);
+        return view('backend.layouts.productdetails.category.categoryedit',compact('category'));
+    }
+    public function categoryupdate(Request $request,$id){
+        Category::find($id)->update([
+            'category_name'=>$request->category_name,
+            'category_description'=>$request->category_description,
+
+        ]);
+        return redirect()->route('category.show')->with('message','Product updated successfully!');
+    }
 }
 

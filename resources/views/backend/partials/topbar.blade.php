@@ -1,11 +1,13 @@
  <!-- Topbar -->
- <nav  class="navbar navbar-light bg-light  topbar mb-12 ">
+ <nav  class="navbar navbar-light bg-secondary  topbar mb-12 ">
 
  
 
 
 
-<h5 style="color:navy;"><b> {{date("l, jS \of F Y, h:i:s A")}}</b></h5>
+<h5 style="color:yellow;"><b>Date: {{date("l, jS \of  F, Y")}}</b></h5>
+<hr>
+<h5 style="color:yellow;"><b> Time: {{date(" h:i:s A")}}</b></h5>
 <ul class="navbar-nav ml-auto">
 
     

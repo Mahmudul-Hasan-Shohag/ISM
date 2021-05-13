@@ -15,31 +15,46 @@ class RegistrationController extends Controller
     public function createcustomer(Request $request){
 
 Customer::create([
-    'id'=>$request->id,
+    
     'cus_name'=>$request->cus_name,
     'cus_address'=>$request->cus_address,
     'cus_mobile'=>$request->cus_mobile,
     'cus_email'=>$request->cus_email,
 
 ]);
-return redirect()->back();
+return redirect()->back()->with('message','Registration Completed');
     }
 //customer
     public function customer(){
 $customer_details=Customer::all();
 
-        return view('backend.layouts.customer',compact('customer_details'));
+        return view('backend.layouts.customers.customer',compact('customer_details'));
     }
 
     public function customersearch(Request $request){
 
-        $customer_details=Customer::where('cus_mobile','like','%'.$request->search.'%')->get();
-    return view('backend.layouts.customer',compact('customer_details'));
+        $customer_details=Customer::where('cus_name','like','%'.$request->search.'%')
+                                    ->orwhere('id','like','%'.$request->search.'%')->get();
+    return view('backend.layouts.customers.customer',compact('customer_details'));
+    }
+    public function customeredit($id){
+$customer=Customer::find($id);
+return view('backend.layouts.customers.customeredit',compact('customer'));
     }
 public function customerdelete($id){
 $customer=Customer::find($id);
 $customer->delete();
 return redirect()->back()->with('message','Customer Deleted successfully');
+}
+public function customerupdate(Request $request,$id){
+Customer::find($id)->update([
+    'cus_name'=>$request->cus_name,
+    'cus_address'=>$request->cus_address,
+    'cus_mobile'=>$request->cus_mobile,
+    'cus_email'=>$request->cus_email,
+
+]);
+return redirect()->route('customer')->with('message','Customer data updated!');
 }
 
 //Employee
@@ -66,11 +81,12 @@ $employee_info=Employee::all();
                 }
 }
 Employee::create([
-    'id'=>$request->id,
+    
     'emp_name'=>$request->emp_name,
     'emp_address'=>$request->emp_address,
     'emp_mobile'=>$request->emp_mobile,
     'emp_email'=>$request->emp_email,
+    'salary'=>$request->salary,
     'emp_image'=>$filename
 
 ]);
@@ -81,9 +97,24 @@ $employee=Employee::find($id);
 $employee->delete();
 return redirect()->back()->with('message','Employee deleted successfully');
 }
+public function employeeedit($id){
+    $employee=Employee::find($id);
+return view('backend.layouts.employee.employeeedit',compact('employee'));
+}
+public function employeeupdate(Request $request,$id){
+   Employee::find($id)->update([
+    'emp_name'=>$request->emp_name,
+    'emp_address'=>$request->emp_address,
+    'emp_mobile'=>$request->emp_mobile,
+    'emp_email'=>$request->emp_email,
+    'salary'=>$request->salary,
+
+   ]);
+return redirect()->route('employeeinfo')->with('message','Employees list updated');
+}
 public function employeesearch(Request $request){
 
-    $employee_info=Employee::where('emp_mobile','like','%'.$request->search.'%')->get();
+    $employee_info=Employee::where('emp_name','like','%'.$request->search.'%')->get();
 return view('backend.layouts.employee.employeeinfo',compact('employee_info'));
 } 
    

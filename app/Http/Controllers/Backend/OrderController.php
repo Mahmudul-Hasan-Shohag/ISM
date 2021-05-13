@@ -100,7 +100,7 @@ public function createFinalInvoice(Request $request){
     }
 
       public function showorder(){
-$order=Order::all();
+$order=Order::paginate(5);
 return view('backend.layouts.orders.ordershow',compact('order'));
     
         }
@@ -114,39 +114,35 @@ return view('backend.layouts.orders.ordershow',compact('order'));
 $order=Order::find($id);
 return view('backend.layouts.orders.orderview',compact('order'));
         }
-        public function orderprocess($id){
-            $order=Order::find($id);
-   
-            return view('backend.layouts.orders.orderprocess',compact('order'));
-        }
         
-  public function orderconfirm(Request $request,$id){
-  
+        
+ public function sellconfirm($id){
+    $sell=Order::find($id);
+    $sell->order_status='SOLD';
+    $sell->save();
 
-$order=Order::find($id)->update([
-'customer_id'=>$request->customer_id,
-'order_status'=>$request->order_status,
-'total_products'=>$request->total_products,
-'cash'=>$request->cash,
-'due'=>$request->due,
-    ]);
-
-    $products=Product::where('id',$id)->first();
-
-    foreach($products as $data){
-        $products_quantity=$products->quantity; 
-        $orders=Order::where('id',$id)->first();
-        $order_quantity=$orders->total_products;
-        $update_quantity=$products_quantity-$order_quantity;
-       Product::where('id',$id)->update(['quantity'=> $update_quantity]);
+    $orderdetails=OrderDetail::where('order_id',$id)->get();
+   
+    foreach($orderdetails as $data){
+    $products=Product::where('id',$data->product_id)->first();
+    $products_quantity=$products->quantity;
+    
+    $order=Order::find($id);
+    $order_quantity=$order->total_products;
+    $update_quantity=$products_quantity-$order_quantity;
+       Product::where('id',$data->product_id)->update(['quantity'=> $update_quantity]);
     }
 
     return redirect()->route('order.show')->with('message','Your product has been delivered');
         }
        
  public function updateinvoice($id){
-            $order=Order::find($id);
-            return view('backend.layouts.orders.updateinvoice',compact('order'));
+            $orderdetails=OrderDetail::with('orderdetailsOrder')->first();
+            
+               $order=OrderDetail::select('product_name')->where('order_id',$id)->get();
+
+          
+            return view('backend.layouts.orders.updateinvoice',compact('orderdetails','order'));
         }
 
 }

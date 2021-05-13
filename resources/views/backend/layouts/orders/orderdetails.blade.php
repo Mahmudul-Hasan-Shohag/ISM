@@ -1,5 +1,6 @@
 @extends('backend.master')
 @section('dashboard')
+<h4 style="text-align: center;color:white;background-color:teal;"><b>Order Details </b></h4>
 <table class="table table-bordered">
   <thead>
     <tr>

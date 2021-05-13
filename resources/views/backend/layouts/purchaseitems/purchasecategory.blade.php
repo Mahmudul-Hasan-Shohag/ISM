@@ -1,8 +1,11 @@
 @extends('backend.master')
 @section('dashboard')
-<h4 style="text-align: center;color:white;background-color:purple;"><b>Purchase Items </b></h4>
 
 
+<p style="text-align:center; margin-top:30px"> 
+<a class="btn btn-success"  href="{{route('add')}}">Add Purchase Items</a>
+<a class="btn btn-info"  href="{{route('purchase.category')}}">Category</a>
+</p>
 <div class="form-group col-md-12 ">
 @if(session()->has('message'))
 <div class="alert alert-info">
@@ -39,10 +42,8 @@ $total_cost+=$data->unit_price*$data->quantity
   </div>
 </div>
 </th> 
-<th><a class="btn btn-info"  href="{{route('purchase.category')}}">Category</a></th>  
-<th><a class="btn btn-success"  href="{{route('add')}}">Add Purchase Items</a> </th>
-<th><a class="btn btn-warning"  href="{{route('purchase.report')}}">Report</a> </th>
-   </tr>
+     
+    </tr>
     
   </thead>
 </table>
@@ -78,7 +79,7 @@ $total_cost+=$data->unit_price*$data->quantity
             <td>
             <div class="btn-group">
             <a href="{{route('purchase.edit',$data->id)}}" class="btn btn-success"><i class="fas fa-edit"></i>Edit</a>
-                 <a href="{{route('purchase.delete',$data->id)}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</a>
+            <a href="{{route('purchase.delete',$data->id)}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</a>
                
             </td>
 

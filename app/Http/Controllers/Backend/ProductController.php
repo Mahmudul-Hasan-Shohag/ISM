@@ -57,12 +57,36 @@ $categories=Category::all();
 
 
      ]); 
-     return redirect()->back(); 
+     return redirect()->back()->with('message','You have  added your product successfully'); 
     }
+   public function productdelete($id){
+       $product=Product::find($id);
+       $product->delete();
+       return redirect()->back()->with('message','product deleted succeefully');
+   }
+   public function productedit($id){
+    $product=Product::find($id);
+    $categories=Category::all();
+   return view('backend.layouts.productdetails.products.productedit',compact('categories','product'));
+}
+public function productupdate(Request $request,$id){
+    Product::find($id)->update([
+        'product_id'=>$request->product_id,
+        'product_name'=>$request->product_name,
+        'product_category'=>$request->product_category,
+        'quantity'=>$request->quantity,
+        'price'=>$request->price, 
+    ]);
+    
+   return redirect()->route('product.show')->with('message','product updated successfully');
+}
+
+
 public function productcategories($id){
     $categories=Category::all();   
-$products=Product::where('product_category',$id)->get();
+$products=Product::where('product_category',$id)->paginate(10);
 return view('backend.layouts.productdetails.products.productcategories',compact('products','categories'));
 }
+
     
 }
