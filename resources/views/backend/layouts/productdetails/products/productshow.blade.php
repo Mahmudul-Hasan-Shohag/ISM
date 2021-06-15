@@ -33,6 +33,7 @@
 </div>
 
 </div>
+<a href="{{route('product.format')}}" class="btn btn-danger"><i class="fas fa-cart-arrow-down"></i>Format</a>
 </p>
 <hr>
 <table class="table table-bordered " >

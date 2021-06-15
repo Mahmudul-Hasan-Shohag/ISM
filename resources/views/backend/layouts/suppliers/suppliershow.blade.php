@@ -9,7 +9,7 @@
             @csrf
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 small"
-                        placeholder="Type employee name" aria-label="Search" name="search"
+                        placeholder="Type supplier name" aria-label="Search" name="search"
                         aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">Search

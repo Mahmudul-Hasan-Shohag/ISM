@@ -1,6 +1,8 @@
 @extends('backend.master')
 @section('dashboard')
 <h4 style="text-align: center;color:white;background-color:teal;"><b>Order Details </b></h4>
+<a href="{{route('orderDetail.format')}}" class="btn btn-danger"><i class="fas fa-cart-arrow-down"></i>Format</a>
+<hr>
 <table class="table table-bordered">
   <thead>
     <tr>

@@ -58,6 +58,7 @@ Route::get('/adminlogout',[AdminController::class,'adminlogout'])->name('admin.l
         Route::get('products/under/categories{id}',[ProductController::class,'productcategories'])->name('product.categories');
         Route::get('products/edit{id}',[ProductController::class,'productedit'])->name('product.edit');
         Route::put('products/update{id}',[ProductController::class,'productupdate'])->name('product.update');
+        Route::get('products/format',[ProductController::class,'productformat'])->name('product.format');
         //PurchaseItems
         
         Route::get('/purchase',[PurchaseController::class,'purchase'])->name('purchase');
@@ -105,6 +106,8 @@ Route::get('/adminlogout',[AdminController::class,'adminlogout'])->name('admin.l
         Route::get('order/process{id}',[ OrderController::class,'orderprocess'])->name('order.process');
         Route::get('sell/confirm{id}',[ OrderController::class,'sellconfirm'])->name('sell.confirm');
         Route::get('update/invoice{id}',[ OrderController::class,'updateinvoice'])->name('update.invoice');
+        Route::get('/order/format',[ OrderController::class,'orderformat'])->name('order.format');
+        Route::get('/orderDetail/format',[ OrderController::class,'orderDetailformat'])->name('orderDetail.format');
         //cart
         Route::get('add-to-cart{id}',[ OrderController::class,'addTocart'])->name('cart');
         Route::get('view/cart',[ OrderController::class,'viewcart'])->name('cart.view');
@@ -122,10 +125,12 @@ Route::get('/adminlogout',[AdminController::class,'adminlogout'])->name('admin.l
         
        //sales
         Route::get('/sales',[SalesController::class,'sales'])->name('sales');
-
+    
         //Report
         Route::get('/report/purchase',[ReportController::class,'purchasereport'])->name('purchase.report');
         Route::get('/report/orders',[ReportController::class,'ordersreport'])->name('orders.report');
+        Route::get('/report/sales',[ReportController::class,'salesreport'])->name('sales.report');
+
         });
 
     

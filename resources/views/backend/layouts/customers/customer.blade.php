@@ -6,7 +6,8 @@
       <input class="col-md-8" type="text" name="search" placeholder="Type id or name" aria-label="Search">
       <button class="btn btn-success" type="submit"><i class="fas fa-search"></i>Search</button>
     </form>
- 
+    <hr>
+ <h3 style="text-align:center;color:black">Total Customers:{{count($customer_details)}}</h3>
   
    @if(session()->has('message'))
 <div class="alert alert-success">

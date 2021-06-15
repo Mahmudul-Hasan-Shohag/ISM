@@ -1,8 +1,25 @@
 @extends('backend.master')
 @section('dashboard')
-<h4 style="text-align: center;color:white;background-color:green;"><b>Sales Records </b></h4>
+<h4 style="text-align: center;color:white;background-color:teal;"><b>Sales Report </b></h4> 
+<form action="{{route('sales.report')}}" method="GET">
+<div class="row">
+<div class="form-group col-md-6">
+<label for="from_date">Date From</label>
+<input type="date" class="form-control" id="from" name="from_date">
+</div>
+<div class="form-group col-md-6">
+<label for="to_date">Date To</label>
+<input type="date" class="form-control" id="to" name="to_date">
+</div>
+</div>
+<p style="text-align:center">
+<button type="submit" class="btn btn-primary "><i class="fas fa-search"></i>search</button>
 
-     @php 
+<button type="button" onclick="printDiv()"  class="btn btn-danger "><i class="fas fa-print"></i>Print</button>
+</p>
+</form> 
+<div id="printArea">
+@php 
        $due=0;
        $cash=0;
       @endphp
@@ -19,19 +36,14 @@
   <th style="color:coral"><strong>Total Selling Price={{ $cash+$due}} TK</strong></th>
   <th style="color:green"><strong>Total Cash={{ $cash}} TK</strong></th>
   <th style="color:red"><strong>Total Due={{ $due}} TK</strong></th>
-  <th><a href="{{route('sales.report')}}" class="btn btn-success">Report</th>
   </tr>
   </thead>
   </table>
-
-  
-
-
-
+<hr>
 <table class="table table-bordered">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">SL</th>
+    <th scope="col">SL</th>
       <th scope="col">Order Date</th>
       <th scope="col">Order ID</th>
       <th scope="col">Total Products</th>
@@ -42,10 +54,7 @@
     </tr>
   </thead>
   <tbody>
-  
-
-
-
+  @if(count($order)>0)
   @foreach($order as $key=>$data)
     <tr>
     
@@ -61,7 +70,22 @@
      
     </tr>
     @endforeach
+   @else
+   <h3 style="color:red;text-align:center">No Data Found</h3>
+   @endif
+   </tr>
   </tbody>
 </table>
-{{$order->links()}}
+<p style="text-align:center">Date:{{date('Y-m-d')}}</p>
+</div>
+<script type="text/javascript">
+function printDiv(){
+var printContents=document.getElementById("printArea").innerHTML;
+var originalContents=document.body.innerHTML;
+document.body.innerHTML=printContents;
+    window.print();
+}
+
+</script>
+
 @endsection

@@ -132,13 +132,6 @@ $sl=1;
 <p style="text-align:center">THANK YOU.SEE YOU AGAIN</p>
 
 </div>
-
-
- 
- <button type="button" onclick="printDiv()"  class="btn btn-danger ">Print</button>
-
-<a href=""class="btn btn-danger"><i class="fa fa-envelope-o"></i> Mail Invoice</a>
-
 <script type="text/javascript">
 function printDiv(){
 var printContents=document.getElementById("printArea").innerHTML;

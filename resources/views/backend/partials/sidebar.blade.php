@@ -6,7 +6,8 @@
     <div class="sidebar-brand-icon rotate-n-15">
     
     </div>
-    <div class="" style="color:crimson">Sanitary Product Inventory </div>
+    <div class="" style="color:crimson"><i>
+    Banglabazar Inventory Store</i></div>
 </a>
 
 

@@ -87,6 +87,11 @@ public function productcategories($id){
 $products=Product::where('product_category',$id)->paginate(10);
 return view('backend.layouts.productdetails.products.productcategories',compact('products','categories'));
 }
+public function productformat(){
+    $products=Product::truncate();
+    $products->delete();
+    return redirect()->back()->with('message','Your Products has been formatted');
+}
 
     
 }

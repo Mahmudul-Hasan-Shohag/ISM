@@ -13,7 +13,10 @@ class RegistrationController extends Controller
         return view('backend.layouts.registrations.customer');
     }
     public function createcustomer(Request $request){
-
+$request->validate([
+'cus_mobile'=>'required|unique:customers|max:14',
+'cus_email'=>'required|unique:customers'
+]);
 Customer::create([
     
     'cus_name'=>$request->cus_name,
@@ -67,6 +70,11 @@ $employee_info=Employee::all();
     }
 
     public function createemployee(Request $request){
+
+        $request->validate([
+'emp_email'=>'required|unique:employees',
+'emp_mobile'=>'required'
+        ]);
 
         $filename='';
         if($request->hasFile('emp_image'))

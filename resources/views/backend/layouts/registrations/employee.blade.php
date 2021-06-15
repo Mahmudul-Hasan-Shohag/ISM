@@ -9,7 +9,18 @@
 <div class="alert alert-success">
 {{session()->get('message')}}
 </div>
-@endif    
+@endif  
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <form action="{{route('employeeregistration.create')}}" method="post" enctype="multipart/form-data">
 @csrf
   <div class="form-group col-md-6">

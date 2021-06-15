@@ -20,10 +20,12 @@
             </form>
       </th>
       <th scope="col"><a class="btn btn-info" href="{{route('salary.form')}}">Add Employee Salary</a></th>
+      <th scope="col"><button type="button" onclick="printDiv()"  class="btn btn-danger "><i class="fas fa-print"></i>Print</button></th>
     </tr>
   </thead>
 </table>
 <hr>
+<div id="printArea">
 <table class="table table-bordered">
   <thead class="table-dark">
     <tr>
@@ -52,4 +54,14 @@
    
   </tbody>
 </table>
+</div>
+<script type="text/javascript">
+function printDiv(){
+var printContents=document.getElementById("printArea").innerHTML;
+var originalContents=document.body.innerHTML;
+document.body.innerHTML=printContents;
+    window.print();
+}
+
+</script>
 @endsection

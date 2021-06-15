@@ -4,6 +4,7 @@
 <p style="text-align:center;margin-top:20px">
 <a href="{{route('order.details')}}" class="btn btn-info">Show Order Details</a>
 <a href="{{route('orders.report')}}" class="btn btn-warning">Report</a>
+<a href="{{route('order.format')}}" class="btn btn-danger"><i class="fas fa-cart-arrow-down"></i>Format</a>
 </p>
 @if(session()->has('message'))
 <div class="alert alert-success">

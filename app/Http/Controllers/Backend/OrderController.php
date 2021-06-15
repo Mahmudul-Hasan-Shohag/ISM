@@ -8,6 +8,8 @@ use App\Models\Customer;
 use App\Models\Product;
 use App\Models\OrderDetail;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderDetails;
 class OrderController extends Controller
 {
     
@@ -46,7 +48,10 @@ public function updatecart(Request $request,$rowId)
 public function createinvoice(Request $request){
     $request->validate([
          
-        'customer_id'=>'required'],
+        'customer_id'=>'required',
+         'cash'=>'required',
+         'due'=>'required'
+    ],
         [
             'customer_id.required'=>'Select Customer ID!',
         
@@ -93,6 +98,9 @@ public function createFinalInvoice(Request $request){
                 'unit_price' => $cart->price,
             ]);
         }
+
+        //sending email
+Mail::to($order->cus_email)->send(new OrderDetails($carts));
 
     return redirect()->route('order.show')->with(Cart::destroy());
 
@@ -143,6 +151,16 @@ return view('backend.layouts.orders.orderview',compact('order'));
 
           
             return view('backend.layouts.orders.updateinvoice',compact('orderdetails','order'));
+        }
+        public function orderformat(){
+            $order=Order::truncate();
+            $order->delete();
+            return redirect()->back()->with('message','Your Date has benn formatted');
+        }
+        public function orderDetailformat(){
+            $order=OrderDetail::truncate();
+            $order->delete();
+            return redirect()->back()->with('message','Your Date has benn formatted');
         }
 
 }
